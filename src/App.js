@@ -11,6 +11,8 @@ const schema = {
   }
 };
 
+localStorage.setItem('myData', 'data');
+
 const log = (type) => console.log.bind(console, type);
 
 function App() {
