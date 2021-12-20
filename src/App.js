@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Form from "react-jsonschema-form"
 
 const schema = {
@@ -24,8 +24,13 @@ function App() {
   console.log(formSchema.length)  // undefined
 
   const schemaFromStorage = JSON.parse(localStorage.getItem('schema'))
+  
+  useEffect(() => {
+    setFormSchema(schemaFromStorage)
+  });
+
   return (
-    <Form schema={schemaFromStorage}
+    <Form schema={formSchema}
       onChange={log("changed")}
       onSubmit={log("submitted")}
       onError={log("errors")} />
