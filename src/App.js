@@ -18,16 +18,11 @@ const log = (type) => console.log.bind(console, type)
 
 function App() {
   const [formSchema, setFormSchema] = useState({})
-
-  console.log('formSchema:', formSchema)
-  if (formSchema == {}) console.log('formSchema is an empty object')
-  console.log(formSchema.length)  // undefined
-
   const schemaFromStorage = JSON.parse(localStorage.getItem('schema'))
   
   useEffect(() => {
     setFormSchema(schemaFromStorage)
-  });
+  }, [schemaFromStorage]);
 
   return (
     <Form schema={formSchema}
