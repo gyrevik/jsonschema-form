@@ -11,7 +11,7 @@ const schema = {
   }
 };
 
-localStorage.setItem('schema', schema)
+localStorage.setItem('schema', JSON.stringify(schema))
 console.log(localStorage.getItem('schema'))
 
 const log = (type) => console.log.bind(console, type)
@@ -19,8 +19,13 @@ const log = (type) => console.log.bind(console, type)
 function App() {
   const [formSchema, setFormSchema] = useState({})
 
+  console.log('formSchema:', formSchema)
+  if (formSchema == {}) console.log('formSchema is an empty object')
+  console.log(formSchema.length)  // undefined
+
+  const schemaFromStorage = JSON.parse(localStorage.getItem('schema'))
   return (
-    <Form schema={schema}
+    <Form schema={schemaFromStorage}
       onChange={log("changed")}
       onSubmit={log("submitted")}
       onError={log("errors")} />
