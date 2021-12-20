@@ -15,11 +15,11 @@ localStorage.setItem('schema', JSON.stringify(schema))
 console.log(localStorage.getItem('schema'))
 
 const log = (type) => console.log.bind(console, type)
+const schemaFromStorage = JSON.parse(localStorage.getItem('schema'))
 
 function App() {
   const [formSchema, setFormSchema] = useState({})
-  const schemaFromStorage = JSON.parse(localStorage.getItem('schema'))
-  
+    
   useEffect(() => {
     setFormSchema(schemaFromStorage)
   }, [schemaFromStorage]);
