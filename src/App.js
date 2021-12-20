@@ -1,5 +1,5 @@
-import React from "react";
-import Form from "react-jsonschema-form";
+import React, { useState } from "react"
+import Form from "react-jsonschema-form"
 
 const schema = {
   title: "Todo",
@@ -11,11 +11,14 @@ const schema = {
   }
 };
 
-localStorage.setItem('myData', 'data');
+localStorage.setItem('schema', schema)
+console.log(localStorage.getItem('schema'))
 
-const log = (type) => console.log.bind(console, type);
+const log = (type) => console.log.bind(console, type)
 
 function App() {
+  const [formSchema, setFormSchema] = useState({})
+
   return (
     <Form schema={schema}
       onChange={log("changed")}
